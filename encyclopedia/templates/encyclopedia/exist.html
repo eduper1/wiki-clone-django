@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ try }}
+{% endblock title %}
+
+{% block body %}
+    <h1>{{ try }}</h1>
+    <p>{{ content|safe }}</p>    
+    <a href="/wiki/{{try}}/edit" class="btn btn-outline-secondry">Edit</a>
+{% endblock body %}

@@ -1,0 +1,28 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    {{ entryTitle}}
+{% endblock title %}
+
+{% block body %}
+        <div>
+            {% if existing %}
+                <p>Ops! A page with this title already exists.
+                    <br> you may wish to view or edit it.
+                    <a href="/wiki/{{entry}}" >Click here</a>
+                </p>
+            {% endif %}
+            <form method="POST" action="{% url 'pea:new' %}">
+                {% if edit %}
+                    {% csrf_token %}
+                    <h2>Editing {{ entryTitle }}</h2>
+                    {{form.as_ul}}
+                    <button type="submit" name="save">Save</button>
+                {% else %}
+                    {% csrf_token %}
+                    {{form.as_ul}}
+                    <button type="submit" name="Create">Create</button>
+                {% endif %}
+            </form>
+        </div>
+{% endblock body %}

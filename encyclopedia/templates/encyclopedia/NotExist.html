@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ entryTitle }}
+{% endblock %}
+
+{% block body %}
+        
+    <h1> Search result for {{ entryTitle }} </h1>
+    <p> Ops! Seems no such entry available {{ entryTitle }} </p>
+    <br> <div class="alert alert-primary" role="alert">
+            <strong> Do you want to create it? </strong> <a href="{% url 'pea:new' %}" class="alert-link">Create</a>
+        </div>
+    </p>
+        
+{% endblock body %}
